@@ -1,0 +1,90 @@
+@import url("../common/reset.css");
+
+.main-logo {
+    display: flex;
+    width: 15rem;
+    margin: 4rem;
+}
+
+.main-logo-img {
+    width: 15rem;
+}
+
+.admin-menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admin-menu-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-content {
+    margin-right: 2rem;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.username {
+    width: 22rem;
+    height: 1rem;
+    margin: 2rem;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+
+.password {
+    width: 22rem;
+    height: 1rem;
+    margin: 2rem;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+
+.login-form {
+    margin-top: 15rem;
+}
+
+.login-input {
+    font-size: 2rem;
+}
+
+.login-btn {
+    width: 24rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-top: 2rem;
+    color: white;
+    background-color: #090a0a;
+}
+
+.login-slack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+    height: 4rem;
+    background-color: white;
+    border: 0.1rem #090a0a solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 2rem;
+    font-size: 1.3rem;
+}
+
+.slack-icon {
+    width: 2rem;
+}
