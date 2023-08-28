@@ -1,0 +1,31 @@
+@import url("../common/reset.css");
+
+.main-logo {
+    display: flex;
+    width: 15rem;
+    margin: 4rem;
+}
+
+.main-logo-img {
+    width: 15rem;
+}
+
+.menu-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-content {
+    margin-right: 2rem;
+}
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
