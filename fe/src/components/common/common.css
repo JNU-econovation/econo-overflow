@@ -1,0 +1,24 @@
+.title-logo-container {
+	display: flex;
+	justify-content: flex-start;
+	margin: 4rem;
+}
+
+.title-logo {
+	width: 20rem;
+	cursor: pointer;
+}
+
+.menu-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-content {
+    margin-right: 2rem;
+}
