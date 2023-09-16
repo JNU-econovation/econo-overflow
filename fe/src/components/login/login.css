@@ -20,18 +20,17 @@
     text-align: center;
 }
 
-.username {
-    width: 22rem;
-    height: 1rem;
-    margin: 2rem;
+.email {
+    width: 24rem;
+    height: 3.5rem;
+    margin-bottom: 2rem;
     font-size: 1.3rem;
     padding: 1rem;
 }
 
 .password {
-    width: 22rem;
-    height: 1rem;
-    margin: 2rem;
+    width: 24rem;
+    height: 3.5rem;
     font-size: 1.3rem;
     padding: 1rem;
 }
@@ -59,11 +58,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
     width: 24rem;
     height: 4rem;
     background-color: white;
-    border: 0.1rem #090a0a solid;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem;   
+    border: black solid 1px;
     cursor: pointer;
     margin: 2rem;
     font-size: 1.3rem;
@@ -71,4 +71,15 @@
 
 .slack-icon {
     width: 2rem;
+    margin-left: 1rem;
+}
+
+.invalid-email-message {
+    color: red;
+    font-size: 1.3rem;
+}
+
+.invalid-password-message {
+    color: red;
+    font-size: 1.3rem;
 }
