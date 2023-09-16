@@ -1,31 +1,18 @@
-@import url("../common/reset.css");
-
-.main-logo {
+.signup-container {
     display: flex;
-    width: 15rem;
-    margin: 4rem;
-}
-
-.main-logo-img {
-    width: 15rem;
-}
-
-.menu-nav {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.menu-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.menu-content {
-    margin-right: 2rem;
-}
-
-.signup-form {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+}
+
+.duplicate-check {
+    width: 6rem;
+    margin-left: 34rem;
 }
