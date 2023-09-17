@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../store/userSlice.js";
-import "./login.css";
 import LoginInput from "./LoginInput";
 import LoginButton from "./LoginButton";
-import LoginSlack from "./LoginSlack";
+import LoginToSignup from "./LoginToSignup.jsx";
 import instance from "../../api/instance";
 import { useNavigate } from "react-router-dom";
 
@@ -54,8 +53,11 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={loginFunction}>
+    <div className="flexCenter">
+      <form className="my-40" onSubmit={loginFunction}>
+        <h2 className="flexCenter mb-10 text-blue font-bold text-4xl">
+          로그인
+        </h2>
         <LoginInput
           email={email}
           password={password}
@@ -65,7 +67,7 @@ const LoginForm = () => {
           isValidPassword={isValidPassword}
         />
         <LoginButton />
-        <LoginSlack />
+        <LoginToSignup />
       </form>
     </div>
   );

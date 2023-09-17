@@ -1,15 +1,22 @@
-import React from 'react'
-import './common.css'
+import React from "react";
+import LoginSuccess from "../login/LoginSuccess";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const selector = useSelector((state) => state.user);
+
   return (
-    <nav className="menu-nav">
-        <div className="menu-container">
-            <div className="menu-content">회원관리</div>
-            <div className="menu-content">신고목록</div>
-        </div>
+    <nav className="flex justify-end">
+      <div className="flex justify-end items-center">
+        {selector.isLogin && <LoginSuccess />}
+        {!selector.isLogin && (
+          <a className="navComponent" href="/login">
+            로그인
+          </a>
+        )}
+      </div>
     </nav>
-  )
-}
+  );
+};
 
 export default Nav;

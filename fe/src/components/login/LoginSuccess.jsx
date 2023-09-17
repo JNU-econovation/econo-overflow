@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../../store/userSlice.js";
-import "./login.css";
 
 const LoginSuccess = () => {
   const user = useSelector((state) => state.user);
@@ -15,8 +14,7 @@ const LoginSuccess = () => {
   };
   return (
     <div className="menu-container">
-      <p className="menu-content-user">님 </p>
-      <button className="menu-content-button" onClick={logoutFunction}>
+      <button className="mr-[2rem]" onClick={logoutFunction}>
         로그아웃
       </button>
     </div>

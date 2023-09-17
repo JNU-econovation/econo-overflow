@@ -1,4 +1,3 @@
-import Form from "react-bootstrap/Form";
 import { useRef, useState, useEffect } from "react";
 import instance from "../../api/instance";
 
@@ -51,51 +50,53 @@ const SignUpInput = ({
   };
 
   return (
-    <div>
-      <Form.Group className="mb-3" controlId="formBasicNickname">
-        <Form.Label>Nickname</Form.Label>
-        <Form.Control
+    <div className="flexCenter">
+      <div className="flexCenter">
+        <input
+          className="inputComponent border-b"
           type="text"
-          placeholder="Nickname"
+          placeholder="닉네임"
           value={nickname}
           onChange={(e) => setNickName(e.target.value)}
         />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email Address</Form.Label>
+      </div>
+      <div className="flexCenter flex-row ml-[5rem]">
+        <input
+          className="inputComponent border-b"
+          type="text"
+          placeholder="이메일"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <button
-          className="duplicate-check"
+          className={`border-2 rounded-lg ml-2 p-2 ${
+            canSignupEmail ? "bg-blue" : "border-blue"
+          } ${canSignupEmail ? "text-white" : "text-blue"} ${
+            !canSignupEmail ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
           type="button"
           onClick={checkDuplicateEmail}
           ref={btnRef}
         >
           중복 확인
         </button>
-        <Form.Control
-          type="text"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
+      </div>
+      <div className="flexCenter flex-col">
+        <input
+          className="inputComponent border-b"
           type="password"
-          placeholder="Enter Password"
+          placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Confirm Password</Form.Label>
-        <Form.Control
+        <input
+          className="inputComponent border-b"
           type="password"
-          placeholder="Confirm Password"
+          placeholder="비밀번호 확인"
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
         />
-      </Form.Group>
+      </div>
     </div>
   );
 };

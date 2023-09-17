@@ -1,12 +1,11 @@
 import Nav from "./Nav";
 import TitleLogo from "./TitleLogo";
 import React from "react";
-import "./common.css";
 
 const Header = () => {
   return (
     <div>
-      <header className="header-container">
+      <header className="flex justify-between items-center ml-[2rem] mr-[2rem]">
         <TitleLogo />
         <Nav />
       </header>
