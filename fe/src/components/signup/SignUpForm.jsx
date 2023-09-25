@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../../api/instance";
-import "./signup.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import Form from "react-bootstrap/Form";
 import SignUpInput from "./SignUpInput";
 import SignUpButton from "./SignUpButton";
@@ -36,8 +35,8 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="signup-container">
-      <Form onSubmit={signupFunction}>
+    <div className="flexCenter flex-col mt-60">
+      <form onSubmit={signupFunction}>
         <SignUpInput
           nickname={nickname}
           email={email}
@@ -48,7 +47,7 @@ const SignUpForm = () => {
           setPassword={setPassword}
           setPasswordConfirm={setPasswordConfirm}
         />
-      </Form>
+      </form>
       <SignUpButton />
     </div>
   );

@@ -1,20 +1,27 @@
-import './App.css';
-import React from 'react';
-import TitleLogo from './components/common/TitleLogo';
-import LoginForm from './components/login/LoginForm';
-import Nav from './components/common/Nav';
+import "./index.css";
+import React from "react";
+import Header from "./components/common/Header";
+import LoginForm from "./components/login/LoginForm";
+import Main from "./components/main/Main";
+import SignUpForm from "./components/signup/SignUpForm";
+import Loading from "./components/common/Loading";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
         <header>
-          <TitleLogo />
-          <Nav />
+          <Header />
         </header>
-        <LoginForm />
-      </div>
-
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/loading" element={<Loading />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

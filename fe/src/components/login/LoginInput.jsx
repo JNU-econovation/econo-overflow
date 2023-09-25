@@ -1,5 +1,4 @@
 import React from "react";
-import "./login.css";
 import LoginRegEmail from "./LoginRegEmail";
 import LobinRegPw from "./LoginRegPw";
 
@@ -12,21 +11,21 @@ const LoginInput = ({
   isValidPassWord,
 }) => {
   return (
-    <div>
-      <div className="login-input">
+    <div className="">
+      <div className="inputComponent flexCenter border-b mt-52">
         <input
           type="text"
-          className="email"
+          className="inputComponent flexCenter"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="이메일"
         />
         <LoginRegEmail isValidEmail={isValidEmail} />
       </div>
-      <div className="login-input">
+      <div className="inputComponent border-b flexCenter">
         <input
           type="password"
-          className="password"
+          className="inputComponent"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="비밀번호"
