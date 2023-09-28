@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
@@ -50,5 +51,12 @@ public class GlobalExceptionHandler {
 	protected ApiResponse<FailureBody> handleException(Exception e) {
 		log.error("Exception", e);
 		return ApiResponseGenerator.fail(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler({MethodArgumentNotValidException.class})
+	protected ApiResponse<FailureBody> handleMethodArgumentNotValidException(
+			MethodArgumentNotValidException e) {
+		return ApiResponseGenerator.fail(
+				e.getBindingResult().getFieldErrors().get(0).getDefaultMessage(), HttpStatus.BAD_REQUEST);
 	}
 }
