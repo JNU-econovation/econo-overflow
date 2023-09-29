@@ -1,13 +1,13 @@
 package com.econovation.overflow.auth.domain.usecase;
 
+import com.econovation.overflow.auth.domain.dto.converter.TokenConverter;
+import com.econovation.overflow.auth.domain.dto.request.LoginUserRequest;
+import com.econovation.overflow.auth.domain.dto.response.TokenResponse;
 import com.econovation.overflow.auth.domain.exception.NotFoundEmailException;
 import com.econovation.overflow.auth.domain.exception.NotFoundPasswordException;
 import com.econovation.overflow.auth.domain.service.SaveTokenService;
 import com.econovation.overflow.auth.persistence.entity.UserEntity;
 import com.econovation.overflow.auth.persistence.repository.UserRepository;
-import com.econovation.overflow.auth.web.dto.converter.TokenConverter;
-import com.econovation.overflow.auth.web.dto.request.LoginUserRequest;
-import com.econovation.overflow.auth.web.dto.response.TokenResponse;
 import com.econovation.overflow.security.authority.UserRole;
 import com.econovation.overflow.security.token.TokenProvider;
 import com.econovation.overflow.security.token.TokenResolver;
