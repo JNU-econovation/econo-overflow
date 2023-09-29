@@ -1,6 +1,7 @@
 package com.econovation.overflow.auth.web.dto.response;
 
 import com.econovation.overflow.common.marker.AbstractResponseDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,5 +16,5 @@ public class TokenResponse implements AbstractResponseDto {
 
 	private String accessToken;
 	private Date expiredTime;
-	private String refreshToken;
+	@JsonIgnore private String refreshToken;
 }
