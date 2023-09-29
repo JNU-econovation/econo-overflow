@@ -1,7 +1,8 @@
 package com.econovation.overflow.common.support.respnose;
 
 public enum MessageCode {
-	CREATE("200", "생성 성공");
+	CREATE("200", "생성 성공"),
+	SUCCESS("OK", "성공");
 	private final String code;
 	private final String message;
 

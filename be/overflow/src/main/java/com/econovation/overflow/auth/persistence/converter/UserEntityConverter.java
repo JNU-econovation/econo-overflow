@@ -1,7 +1,7 @@
-package com.econovation.overflow.auth.infra.converter;
+package com.econovation.overflow.auth.persistence.converter;
 
 import com.econovation.overflow.auth.domain.model.UserModel;
-import com.econovation.overflow.auth.infra.entity.UserEntity;
+import com.econovation.overflow.auth.persistence.entity.UserEntity;
 import com.econovation.overflow.common.support.converter.AbstractEntityConverter;
 import org.springframework.stereotype.Component;
 

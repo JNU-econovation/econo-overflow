@@ -1,4 +1,4 @@
-package com.econovation.overflow.auth.infra.entity;
+package com.econovation.overflow.auth.persistence.entity;
 
 import java.util.Arrays;
 import java.util.Optional;

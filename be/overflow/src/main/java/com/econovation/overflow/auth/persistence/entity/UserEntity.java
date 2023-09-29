@@ -1,20 +1,15 @@
-package com.econovation.overflow.auth.infra.entity;
+package com.econovation.overflow.auth.persistence.entity;
 
-import static com.econovation.overflow.auth.infra.entity.AuthInfoEntity.ENTITY_PREFIX;
+import static com.econovation.overflow.auth.persistence.entity.UserEntity.ENTITY_PREFIX;
 
 import com.econovation.overflow.common.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -26,24 +21,21 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @SuperBuilder(toBuilder = true)
 @Entity(name = ENTITY_PREFIX + "_entity")
-public class AuthInfoEntity extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
-	public static final String ENTITY_PREFIX = "auth_info";
+	public static final String ENTITY_PREFIX = "user";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = ENTITY_PREFIX + "_id", nullable = false)
 	private Long id;
 
-	@Builder.Default
-	@Enumerated(EnumType.STRING)
-	@Column(name = ENTITY_PREFIX + "_type", nullable = false)
-	private LoginType type = LoginType.SERVICE;
+	@Column(name = ENTITY_PREFIX + "_nickname", nullable = false)
+	private String nickname;
 
-	@Column(name = ENTITY_PREFIX + "_token", nullable = false)
-	private String token;
+	@Column(name = ENTITY_PREFIX + "_email", nullable = false)
+	private String email;
 
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	private UserEntity userEntity;
+	@Column(name = ENTITY_PREFIX + "_password", nullable = false)
+	private String password;
 }
