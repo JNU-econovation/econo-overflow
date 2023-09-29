@@ -2,8 +2,8 @@ package com.econovation.overflow.auth.web.controller;
 
 import com.econovation.overflow.auth.domain.usecase.ValidEmailUseCase;
 import com.econovation.overflow.auth.domain.usecase.ValidNicknameUseCase;
-import com.econovation.overflow.auth.domain.dto.request.ValidEmailRequest;
-import com.econovation.overflow.auth.domain.dto.request.ValidNicknameRequest;
+import com.econovation.overflow.auth.web.dto.request.ValidEmailRequest;
+import com.econovation.overflow.auth.web.dto.request.ValidNicknameRequest;
 import com.econovation.overflow.common.support.respnose.ApiResponse;
 import com.econovation.overflow.common.support.respnose.ApiResponseBody.SuccessBody;
 import com.econovation.overflow.common.support.respnose.ApiResponseGenerator;
