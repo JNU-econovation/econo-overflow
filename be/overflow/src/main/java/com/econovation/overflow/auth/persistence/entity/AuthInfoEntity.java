@@ -46,6 +46,10 @@ public class AuthInfoEntity extends BaseEntity {
 	private String token;
 
 	@OneToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(
+			name = "user_id",
+			nullable = false,
+			foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
+			updatable = false)
 	private UserEntity userEntity;
 }
