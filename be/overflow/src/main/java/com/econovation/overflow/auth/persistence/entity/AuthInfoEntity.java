@@ -42,14 +42,9 @@ public class AuthInfoEntity extends BaseEntity {
 	@Column(name = ENTITY_PREFIX + "_type", nullable = false)
 	private LoginType type = LoginType.SERVICE;
 
+	@Column(name = "user_id", nullable = false)
+	private Long userId;
+
 	@Column(name = ENTITY_PREFIX + "_token", nullable = false)
 	private String token;
-
-	@OneToOne
-	@JoinColumn(
-			name = "user_id",
-			nullable = false,
-			foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT),
-			updatable = false)
-	private UserEntity userEntity;
 }

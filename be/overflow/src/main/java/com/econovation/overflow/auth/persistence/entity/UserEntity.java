@@ -4,16 +4,21 @@ import static com.econovation.overflow.auth.persistence.entity.UserEntity.ENTITY
 
 import com.econovation.overflow.common.BaseEntity;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.springframework.security.authentication.AuthenticationProvider;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,6 +27,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @Entity(name = ENTITY_PREFIX + "_entity")
 public class UserEntity extends BaseEntity {
+
 	public static final String ENTITY_PREFIX = "user";
 
 	@Id
