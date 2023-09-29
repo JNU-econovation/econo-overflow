@@ -1,8 +1,8 @@
 package com.econovation.overflow.auth.web.controller;
 
 import com.econovation.overflow.auth.domain.usecase.LoginUserUseCase;
-import com.econovation.overflow.auth.domain.dto.request.LoginUserRequest;
-import com.econovation.overflow.auth.domain.dto.response.TokenResponse;
+import com.econovation.overflow.auth.web.dto.request.LoginUserRequest;
+import com.econovation.overflow.auth.web.dto.response.TokenResponse;
 import com.econovation.overflow.common.support.respnose.ApiResponse;
 import com.econovation.overflow.common.support.respnose.ApiResponseBody.SuccessBody;
 import com.econovation.overflow.common.support.respnose.ApiResponseGenerator;

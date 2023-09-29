@@ -5,7 +5,7 @@ import com.econovation.overflow.auth.domain.model.converter.UserModelConverter;
 import com.econovation.overflow.auth.domain.service.SaveUserService;
 import com.econovation.overflow.auth.persistence.converter.UserEntityConverter;
 import com.econovation.overflow.auth.persistence.repository.UserRepository;
-import com.econovation.overflow.auth.domain.dto.request.SaveUserRequest;
+import com.econovation.overflow.auth.web.dto.request.SaveUserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
