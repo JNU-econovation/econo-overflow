@@ -1,6 +1,6 @@
-package com.econovation.overflow.auth.infra.entity;
+package com.econovation.overflow.auth.persistence.entity;
 
-import static com.econovation.overflow.auth.infra.entity.UserEntity.ENTITY_PREFIX;
+import static com.econovation.overflow.auth.persistence.entity.UserEntity.ENTITY_PREFIX;
 
 import com.econovation.overflow.common.BaseEntity;
 import javax.persistence.Column;
