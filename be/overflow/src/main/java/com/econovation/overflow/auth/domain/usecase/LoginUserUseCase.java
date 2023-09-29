@@ -38,10 +38,12 @@ public class LoginUserUseCase {
 
 		validPassword(request.getPassword(), userEntity);
 
-		String accessToken = tokenProvider.createAccessToken(userEntity.getId(),
-				Collections.singletonList(UserRole.USER));
-		String refreshToken = tokenProvider.createRefreshToken(userEntity.getId(),
-				Collections.singletonList(UserRole.USER));
+		String accessToken =
+				tokenProvider.createAccessToken(
+						userEntity.getId(), Collections.singletonList(UserRole.USER));
+		String refreshToken =
+				tokenProvider.createRefreshToken(
+						userEntity.getId(), Collections.singletonList(UserRole.USER));
 
 		saveTokenService.execute(userEntity.getId(), refreshToken);
 
