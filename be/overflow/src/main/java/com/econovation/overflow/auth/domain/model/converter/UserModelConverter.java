@@ -1,7 +1,7 @@
 package com.econovation.overflow.auth.domain.model.converter;
 
+import com.econovation.overflow.auth.domain.dto.request.SaveUserRequest;
 import com.econovation.overflow.auth.domain.model.UserModel;
-import com.econovation.overflow.auth.web.dto.request.SaveUserRequest;
 import com.econovation.overflow.common.support.converter.AbstractDtoConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,7 +1,7 @@
 package com.econovation.overflow.auth.web.controller;
 
+import com.econovation.overflow.auth.domain.dto.request.SaveUserRequest;
 import com.econovation.overflow.auth.domain.usecase.SaveUserUseCase;
-import com.econovation.overflow.auth.web.dto.request.SaveUserRequest;
 import com.econovation.overflow.common.support.respnose.ApiResponse;
 import com.econovation.overflow.common.support.respnose.ApiResponseBody.SuccessBody;
 import com.econovation.overflow.common.support.respnose.ApiResponseGenerator;
