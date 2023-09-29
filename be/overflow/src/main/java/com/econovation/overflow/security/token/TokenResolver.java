@@ -2,13 +2,10 @@ package com.econovation.overflow.security.token;
 
 import com.econovation.overflow.security.exception.NotValidToken;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.Optional;
 import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -22,15 +19,10 @@ public class TokenResolver {
 	private final SecretKey refreshSecretKey;
 
 	public TokenResolver(
-			@Value("${security.jwt.token.access.secretKey}")
-			String accessSecretKey,
-			@Value("${security.jwt.token.refresh.secretKey}")
-			String refreshSecretKey
-	) {
-		this.accessSecretKey = Keys.hmacShaKeyFor(
-				accessSecretKey.getBytes(StandardCharsets.UTF_8));
-		this.refreshSecretKey = Keys.hmacShaKeyFor(
-				refreshSecretKey.getBytes(StandardCharsets.UTF_8));
+			@Value("${security.jwt.token.access.secretKey}") String accessSecretKey,
+			@Value("${security.jwt.token.refresh.secretKey}") String refreshSecretKey) {
+		this.accessSecretKey = Keys.hmacShaKeyFor(accessSecretKey.getBytes(StandardCharsets.UTF_8));
+		this.refreshSecretKey = Keys.hmacShaKeyFor(refreshSecretKey.getBytes(StandardCharsets.UTF_8));
 	}
 
 	private Claims getClaims(final String token) {
@@ -45,7 +37,7 @@ public class TokenResolver {
 		}
 	}
 
-	public Date getExpiredDate(final String token){
+	public Date getExpiredDate(final String token) {
 		return getClaims(token).getExpiration();
 	}
 }

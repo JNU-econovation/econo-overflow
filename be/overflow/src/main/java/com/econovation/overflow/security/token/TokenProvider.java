@@ -11,7 +11,6 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class TokenProvider {
 
@@ -25,24 +24,20 @@ public class TokenProvider {
 	private final long refreshValidTime;
 
 	public TokenProvider(
-			@Value("${security.jwt.token.access.secretKey}")
-			String accessSecretKey,
-			@Value("${security.jwt.token.access.validTime}")
-			long accessValidTime,
-			@Value("${security.jwt.token.refresh.secretKey}")
-			String refreshSecretKey,
-			@Value("${security.jwt.token.refresh.validTime}")
-			long refreshValidTime
-	) {
-		this.accessSecretKey = Keys.hmacShaKeyFor(
-				accessSecretKey.getBytes(StandardCharsets.UTF_8));
+			@Value("${security.jwt.token.access.secretKey}") String accessSecretKey,
+			@Value("${security.jwt.token.access.validTime}") long accessValidTime,
+			@Value("${security.jwt.token.refresh.secretKey}") String refreshSecretKey,
+			@Value("${security.jwt.token.refresh.validTime}") long refreshValidTime) {
+		this.accessSecretKey = Keys.hmacShaKeyFor(accessSecretKey.getBytes(StandardCharsets.UTF_8));
 		this.accessValidTime = accessValidTime;
-		this.refreshSecretKey = Keys.hmacShaKeyFor(
-				refreshSecretKey.getBytes(StandardCharsets.UTF_8));
+		this.refreshSecretKey = Keys.hmacShaKeyFor(refreshSecretKey.getBytes(StandardCharsets.UTF_8));
 		this.refreshValidTime = refreshValidTime;
 	}
 
-	private String createToken(final Long userId, final List<UserRole> userRoles, final SecretKey secretKey,
+	private String createToken(
+			final Long userId,
+			final List<UserRole> userRoles,
+			final SecretKey secretKey,
 			final long validTime) {
 		final Date now = new Date();
 
@@ -63,5 +58,4 @@ public class TokenProvider {
 	public String createRefreshToken(final Long userId, final List<UserRole> userRoles) {
 		return createToken(userId, userRoles, refreshSecretKey, refreshValidTime);
 	}
-
 }
