@@ -1,7 +1,7 @@
 package com.econovation.overflow.auth.domain.usecase;
 
 import com.econovation.overflow.auth.domain.exception.DuplicateException;
-import com.econovation.overflow.auth.infra.repository.UserRepository;
+import com.econovation.overflow.auth.persistence.repository.UserRepository;
 import com.econovation.overflow.auth.web.supplier.NicknameSupplier;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
