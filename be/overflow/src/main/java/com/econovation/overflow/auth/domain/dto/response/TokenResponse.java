@@ -16,6 +16,5 @@ public class TokenResponse implements AbstractResponseDto {
 
 	private String accessToken;
 	private Date expiredTime;
-	@JsonIgnore
-	private String refreshToken;
+	@JsonIgnore private String refreshToken;
 }

@@ -14,6 +14,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class ValidEmailRequest implements AbstractRequestDto, EmailSupplier {
-	@NotNull
-	@Email String email;
+	@NotNull @Email String email;
 }
