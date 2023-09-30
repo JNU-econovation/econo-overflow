@@ -39,6 +39,7 @@ repositories {
 
 /** apply tasks */
 apply from: './tasks/formatting-task.gradle'
+apply from: './tasks/install-git-hooks.gradle'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'

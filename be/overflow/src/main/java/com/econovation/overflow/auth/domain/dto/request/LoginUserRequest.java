@@ -18,9 +18,7 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 public class LoginUserRequest implements AbstractRequestDto, EmailSupplier {
 
-	@NotNull
-	@Email
-	private String email;
+	@NotNull @Email private String email;
 
 	@NotNull
 	@Size(min = 8)

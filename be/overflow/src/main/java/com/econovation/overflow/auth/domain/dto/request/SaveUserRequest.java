@@ -19,10 +19,8 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 public class SaveUserRequest implements AbstractRequestDto, EmailSupplier, NicknameSupplier {
 
-	@NotNull
-	private String nickname;
-	@NotNull @Email
-	private String email;
+	@NotNull private String nickname;
+	@NotNull @Email private String email;
 
 	@NotNull
 	@Size(min = 8)
