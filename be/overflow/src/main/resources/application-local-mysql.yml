@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: local-mysql
+  datasource:
+    url: jdbc:mysql://localhost:13307/overflow?allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    url:
+
+logging:
+  level:
+    sql: debug
