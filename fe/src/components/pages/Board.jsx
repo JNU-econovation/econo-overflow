@@ -1,7 +1,14 @@
 import React from 'react';
+import MDEditor from '@uiw/react-md-editor';
 
 const Board = () => {
-    return <div>안녕하세요</div>;
+  const [value, setValue] = React.useState('**Hello world!!!**');
+
+  return (
+    <div className='container'>
+      <MDEditor height={700} value={value} onChange={setValue} />
+    </div>
+  );
 };
 
 export default Board;
