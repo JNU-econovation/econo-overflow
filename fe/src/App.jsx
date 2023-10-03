@@ -7,6 +7,7 @@ import SignUpForm from './components/signup/SignUpForm';
 import Loading from './components/common/Loading';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BoardCreate from './components/pages/BoardCreate';
+import BoardList from './components/pages/BoardList';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path='/login' element={<LoginForm />} />
           <Route path='/signup' element={<SignUpForm />} />
           <Route path='/loading' element={<Loading />} />
-          <Route path='/board' element={<BoardCreate />} />
+          <Route path='/boardwrite' element={<BoardCreate />} />
+          <Route path='/boardlist' element={<BoardList />} />
         </Routes>
       </BrowserRouter>
     </div>
