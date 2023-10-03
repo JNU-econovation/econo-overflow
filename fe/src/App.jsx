@@ -8,6 +8,7 @@ import Loading from './components/common/Loading';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BoardCreate from './components/pages/BoardCreate';
 import BoardList from './components/pages/BoardList';
+import BoardRead from './components/pages/BoardRead';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/loading' element={<Loading />} />
           <Route path='/boardwrite' element={<BoardCreate />} />
           <Route path='/boardlist' element={<BoardList />} />
+          <Route path='/boardread' element={<BoardRead />} />
         </Routes>
       </BrowserRouter>
     </div>
