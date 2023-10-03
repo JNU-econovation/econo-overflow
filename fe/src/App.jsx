@@ -6,7 +6,7 @@ import Main from './components/main/Main';
 import SignUpForm from './components/signup/SignUpForm';
 import Loading from './components/common/Loading';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Board from './components/pages/Board';
+import BoardCreate from './components/pages/BoardCreate';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route path='/login' element={<LoginForm />} />
           <Route path='/signup' element={<SignUpForm />} />
           <Route path='/loading' element={<Loading />} />
-          <Route path='/board' element={<Board />} />
+          <Route path='/board' element={<BoardCreate />} />
         </Routes>
       </BrowserRouter>
     </div>
