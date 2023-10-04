@@ -1,0 +1,33 @@
+version: '3.1'
+services:
+  mysql:
+    container_name: overflow-mysql-dev
+    image: mysql/mysql-server:8.0.27
+    environment:
+      - MYSQL_DATABASE=overflow
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=root
+    command: [ "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--lower_case_table_names=1", "--max_connections=2048", "--wait_timeout=3600" ]
+    ports:
+      - "13307:3306"
+    volumes: #볼륨 지정
+      - ./resources/develop-environment/mysql-init.d:/docker-entrypoint-initdb.d
+    networks: #사용할 네트워크 지정
+      - overflow-network
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: overflow-app-dev
+    depends_on:
+      - mysql
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://overflow-mysql-dev:3306/overflow?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: dev
+    networks: #사용할 네트워크 지정
+      - overflow-network
+networks:
+  overflow-network:
