@@ -1,0 +1,9 @@
+security:
+  jwt:
+    token:
+      access:
+        secretKey: asccesssecretkeyoverflowsecrekey
+        validTime: 18000
+      refresh:
+        secretKey: refreshsecretkeyoverflowsecrekey
+        validTime: 604800
