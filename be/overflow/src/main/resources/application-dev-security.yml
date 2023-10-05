@@ -1,3 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: dev-security
+
 security:
   jwt:
     token:

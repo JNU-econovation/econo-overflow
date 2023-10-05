@@ -1,3 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: local-security
+
 security:
   jwt:
     token:
