@@ -38,14 +38,14 @@ public class SecurityConfig {
 		http.csrf().disable();
 		http.formLogin().disable();
 		http.httpBasic().disable();
-		http.cors();
+		http.cors().configurationSource(corsConfigurationSource());
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/users/auth/**").permitAll();
 
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		return http.build();
 	}
 
-	private CorsConfigurationSource configurationSource() {
+	private CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.addAllowedMethod("*");
 		configuration.addAllowedHeader("*");
@@ -53,6 +53,7 @@ public class SecurityConfig {
 
 		configuration.setAllowCredentials(true);
 		configuration.addExposedHeader("Authorization");
+		configuration.addExposedHeader("Set-Cookie");
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
