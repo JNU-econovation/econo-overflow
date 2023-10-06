@@ -9,7 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,24 +24,24 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @SuperBuilder(toBuilder = true)
 @Entity(name = ENTITY_PREFIX + "_entity")
-@Table(name = ENTITY_PREFIX + "tb")
+@Table(name = ENTITY_PREFIX + "_tb")
 public class AuthInfoEntity {
 
-  public static final String ENTITY_PREFIX = "auth_info";
+	public static final String ENTITY_PREFIX = "auth_info";
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = ENTITY_PREFIX + "_id", nullable = false)
-  private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = ENTITY_PREFIX + "_id", nullable = false)
+	private Long id;
 
-  @Builder.Default
-  @Enumerated(EnumType.STRING)
-  @Column(name = ENTITY_PREFIX + "_type", nullable = false)
-  private LoginType type = LoginType.SERVICE;
+	@Builder.Default
+	@Enumerated(EnumType.STRING)
+	@Column(name = ENTITY_PREFIX + "_type", nullable = false)
+	private LoginType type = LoginType.SERVICE;
 
-  @Column(name = "user_id", nullable = false)
-  private Long userId;
+	@Column(name = "user_id", nullable = false)
+	private Long userId;
 
-  @Column(name = ENTITY_PREFIX + "_token", nullable = false)
-  private String token;
+	@Column(name = ENTITY_PREFIX + "_token", nullable = false)
+	private String token;
 }

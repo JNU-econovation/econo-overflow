@@ -24,10 +24,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @Entity(name = ENTITY_PREFIX + "_entity")
 @Table(
-		name = ENTITY_PREFIX + "tb",
+		name = ENTITY_PREFIX + "_tb",
 		indexes = {
-			@Index(name = "idx_nickname", columnList = "nickname", unique = true),
-			@Index(name = "idx_email", columnList = "email", unique = true)
+			@Index(name = "idx_nickname", columnList = ENTITY_PREFIX + "_nickname", unique = true),
+			@Index(name = "idx_email", columnList = ENTITY_PREFIX + "_email", unique = true)
 		})
 public class UserEntity extends BaseEntity {
 
