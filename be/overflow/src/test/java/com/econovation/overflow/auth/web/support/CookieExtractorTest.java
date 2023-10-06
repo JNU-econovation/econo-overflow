@@ -47,7 +47,7 @@ class CookieExtractorTest {
 	}
 
 	@Test
-	@DisplayName("refresh token cookie가 존재하지 않을 경우 예외가 발생한다.")
+	@DisplayName("request에 cookie가 존재하지 않을 경우 예외가 발생한다.")
 	void extract_cookie_not_found() {
 		// given
 		MockHttpServletRequest request = new MockHttpServletRequest();
