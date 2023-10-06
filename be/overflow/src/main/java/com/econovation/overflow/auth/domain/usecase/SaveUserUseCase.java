@@ -3,7 +3,7 @@ package com.econovation.overflow.auth.domain.usecase;
 import com.econovation.overflow.auth.domain.dto.request.SaveUserRequest;
 import com.econovation.overflow.auth.domain.model.UserModel;
 import com.econovation.overflow.auth.domain.model.converter.UserModelConverter;
-import com.econovation.overflow.auth.domain.service.SaveUserService;
+import com.econovation.overflow.auth.domain.service.ValidUserService;
 import com.econovation.overflow.auth.persistence.converter.UserEntityConverter;
 import com.econovation.overflow.auth.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +17,12 @@ public class SaveUserUseCase {
 	private final UserRepository userRepository;
 	private final UserModelConverter modelConverter;
 	private final UserEntityConverter entityConverter;
-	private final SaveUserService saveUserService;
+	private final ValidUserService validUserService;
 
 	@Transactional
 	public void execute(SaveUserRequest request) {
 		UserModel userModel = modelConverter.from(request);
-		saveUserService.execute(userModel);
+		validUserService.execute(userModel);
 		userRepository.save(entityConverter.toEntity(userModel));
 	}
 }

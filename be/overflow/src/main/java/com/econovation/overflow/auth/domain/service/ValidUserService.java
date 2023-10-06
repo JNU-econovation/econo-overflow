@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class SaveUserService {
+public class ValidUserService {
 	private final ValidEmailUseCase validEmailUseCase;
 	private final ValidNicknameUseCase validNicknameUseCase;
 
