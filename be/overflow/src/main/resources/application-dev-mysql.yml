@@ -1,11 +1,11 @@
 spring:
   config:
     activate:
-      on-profile: local-mysql
+      on-profile: dev-mysql
   datasource:
-    url: jdbc:mysql://localhost:13307/overflow?allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
-    username: root
-    password: root
+    url: ${DB_CONNECTION_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -13,6 +13,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 logging:
   level:

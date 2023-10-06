@@ -2,7 +2,6 @@ package com.econovation.overflow.auth.persistence.entity;
 
 import static com.econovation.overflow.auth.persistence.entity.AuthInfoEntity.ENTITY_PREFIX;
 
-import com.econovation.overflow.common.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +24,8 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @SuperBuilder(toBuilder = true)
 @Entity(name = ENTITY_PREFIX + "_entity")
-public class AuthInfoEntity extends BaseEntity {
+@Table(name = ENTITY_PREFIX + "_tb")
+public class AuthInfoEntity {
 
 	public static final String ENTITY_PREFIX = "auth_info";
 

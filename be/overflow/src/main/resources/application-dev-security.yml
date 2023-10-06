@@ -1,13 +1,14 @@
 spring:
   config:
     activate:
-      on-profile: local-security
+      on-profile: dev-security
 
 security:
   jwt:
     token:
       secretKey: asccesssecretkeyoverflowsecrekey
       access:
-        validTime: 1800000
+        validTime: 180
       refresh:
-        validTime: 3600000
+        validTime : 360
+
