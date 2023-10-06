@@ -1,6 +1,5 @@
 package com.econovation.overflow.security;
 
-import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -41,8 +40,10 @@ public class SecurityConfig {
 		http.formLogin().disable();
 		http.httpBasic().disable();
 		http.cors().configurationSource(corsConfigurationSource());
+
 		http.authorizeRequests()
-				.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+				.requestMatchers(CorsUtils::isPreFlightRequest)
+				.permitAll()
 				.antMatchers(HttpMethod.POST, "/users/auth/**")
 				.permitAll();
 
@@ -54,7 +55,7 @@ public class SecurityConfig {
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
 		configuration.addAllowedHeader("*");
-    configuration.setAllowedOrigins(List.of("http://localhost:3000","https://ecnvoverflow.com"));
+		configuration.setAllowedOrigins(List.of("http://localhost:3000", "https://ecnvoverflow.com"));
 
 		configuration.setAllowCredentials(true);
 		configuration.setExposedHeaders(List.of("*"));

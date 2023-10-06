@@ -24,9 +24,10 @@ public class ReissueUseCase {
 	public TokenResponse execute(final String token) {
 		Long userId = tokenResolver.getUserInfo(token);
 
-		AuthInfoEntity authInfoEntity = authInfoRepository
-				.findByUserIdAndToken(userId, token)
-				.orElseThrow(() -> new AuthorizationException("잘못된 토큰 입니다"));
+		AuthInfoEntity authInfoEntity =
+				authInfoRepository
+						.findByUserIdAndToken(userId, token)
+						.orElseThrow(() -> new AuthorizationException("잘못된 토큰 입니다"));
 
 		authInfoRepository.delete(authInfoEntity);
 		return createTokenService.execute(userId);
