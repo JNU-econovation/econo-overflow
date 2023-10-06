@@ -1,6 +1,7 @@
 package com.econovation.overflow.security;
 
 import java.util.Collections;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
@@ -39,8 +41,10 @@ public class SecurityConfig {
 		http.formLogin().disable();
 		http.httpBasic().disable();
 		http.cors().configurationSource(corsConfigurationSource());
-		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**/*").permitAll()
-		.antMatchers(HttpMethod.POST, "/users/auth/**").permitAll();
+		http.authorizeRequests()
+				.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+				.antMatchers(HttpMethod.POST, "/users/auth/**")
+				.permitAll();
 
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		return http.build();
@@ -48,13 +52,12 @@ public class SecurityConfig {
 
 	private CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.addAllowedMethod("*");
+		configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
 		configuration.addAllowedHeader("*");
-		configuration.setAllowedOrigins(Collections.singletonList("*"));
+    configuration.setAllowedOrigins(List.of("http://localhost:3000","https://ecnvoverflow.com"));
 
 		configuration.setAllowCredentials(true);
-		configuration.addExposedHeader("Authorization");
-		configuration.addExposedHeader("Set-Cookie");
+		configuration.setExposedHeaders(List.of("*"));
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
