@@ -1,11 +1,21 @@
 package com.econovation.overflow.security.token;
 
-public class TokenValidator {}
+import com.econovation.overflow.auth.domain.exception.AuthorizationException;
+import java.util.Date;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-/**
- * Date tokenExpirationDate = claims.getBody().getExpiration();
- * validateTokenExpiration(tokenExpirationDate);
- *
- * <p>private void validateTokenExpiration(Date tokenExpirationDate) { if
- * (tokenExpirationDate.before(new Date())) { throw new TokenExpirationException(); }* }
- */
+@Component
+@RequiredArgsConstructor
+public class TokenValidator {
+	private final TokenResolver tokenResolver;
+
+	public boolean isExpiredDate(String token) {
+		Date expiredDate = tokenResolver.getExpiredDate(token);
+
+		if (expiredDate.before(new Date())) {
+			throw new AuthorizationException("토큰이 만료되었습니다");
+		}
+		return false;
+	}
+}
