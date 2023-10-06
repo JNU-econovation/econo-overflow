@@ -39,7 +39,8 @@ public class SecurityConfig {
 		http.formLogin().disable();
 		http.httpBasic().disable();
 		http.cors().configurationSource(corsConfigurationSource());
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/users/auth/**").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**/*").permitAll()
+		.antMatchers(HttpMethod.POST, "/users/auth/**").permitAll();
 
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		return http.build();
