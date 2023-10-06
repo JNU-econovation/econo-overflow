@@ -56,4 +56,20 @@ class CookieExtractorTest {
 		assertThatThrownBy(() -> cookieExtractor.extract(request))
 				.isInstanceOf(AuthorizationException.class);
 	}
+
+	@Test
+	@DisplayName("refresh token cookie가 존재하지 않을 경우 예외가 발생한다.")
+	void extract_refresh_cookie_not_found() {
+		// given
+		String key = "key";
+		String value = "value";
+
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		Cookie cookie = new Cookie(key, value);
+		request.setCookies(cookie);
+
+		// when & then
+		assertThatThrownBy(() -> cookieExtractor.extract(request))
+				.isInstanceOf(AuthorizationException.class);
+	}
 }
