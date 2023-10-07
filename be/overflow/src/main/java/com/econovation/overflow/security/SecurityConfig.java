@@ -55,9 +55,8 @@ public class SecurityConfig {
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
 		configuration.addAllowedHeader("*");
-		configuration.setAllowedOrigins(List.of("http://localhost:3000", "https://ecnvoverflow.com"));
+		configuration.addAllowedOriginPattern("*");
 
-		configuration.setAllowCredentials(true);
 		configuration.setExposedHeaders(List.of("*"));
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
