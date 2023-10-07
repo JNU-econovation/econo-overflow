@@ -5,10 +5,8 @@ import com.econovation.overflow.auth.domain.dto.response.TokenResponse;
 import com.econovation.overflow.auth.persistence.converter.AuthInfoEntityConverter;
 import com.econovation.overflow.auth.persistence.entity.AuthInfoEntity;
 import com.econovation.overflow.auth.persistence.repository.AuthInfoRepository;
-import com.econovation.overflow.security.authority.UserRole;
 import com.econovation.overflow.security.token.TokenProvider;
 import com.econovation.overflow.security.token.TokenResolver;
-import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,8 +23,7 @@ public class CreateTokenService {
 
 	@Transactional
 	public TokenResponse execute(final Long userId) {
-		String accessToken =
-				tokenProvider.createAccessToken(userId, Collections.singletonList(UserRole.USER));
+		String accessToken = tokenProvider.createAccessToken(userId);
 		String refreshToken = tokenProvider.createRefreshToken(userId);
 
 		saveToken(userId, refreshToken);
