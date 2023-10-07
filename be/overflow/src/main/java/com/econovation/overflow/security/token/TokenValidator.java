@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 public class TokenValidator {
 	private final TokenResolver tokenResolver;
 
-	public boolean isExpiredDate(String token) {
+	public void valid(String token) {
 		Date expiredDate = tokenResolver.getExpiredDate(token);
 
 		if (expiredDate.before(new Date())) {
 			throw new AuthorizationException("토큰이 만료되었습니다");
 		}
-		return false;
 	}
 }
