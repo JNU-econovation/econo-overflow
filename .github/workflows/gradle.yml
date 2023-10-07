@@ -5,7 +5,7 @@
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
-name: Java CI with Gradle
+name: overflow CI/CD
 
 on:
   push:
@@ -22,12 +22,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    ## jdk setting
     - uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
+
+    # gradle setting
     - name: init with Gradle
       uses: gradle/gradle-build-action@v2
     - run: gradle init
@@ -36,3 +40,44 @@ jobs:
       with:
         gradle-version: 7.5.1
         arguments: build
+
+#      ## gradle build
+#    - name: Build with Gradle
+#      run: ./gradlew :spotlessApply build -x test
+
+      ## docker build & push to production      // name 수정 필요
+      ## DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
+    - name: Docker build & push to prod
+      if: contains(github.ref, 'main')
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -f Dockerfile-prod -t ${{ secrets.DOCKER_REPO }}
+        docker push ${{ secrets.DOCKER_REPO }}
+        
+
+      ## docker build & push to develop
+      # DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
+    - name: Docker build & push to dev
+      if: contains(github.ref, 'develop')
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -f Dockerfile-dev -t ${{ secrets.DOCKER_REPO }}
+        docker push ${{ secrets.DOCKER_REPO }}
+
+      ## deploy to develop
+      # HOST_DEV USERNAME  PASSWORD
+    - name: Deploy to dev
+      uses: appleboy/ssh-action@master
+      id: deploy-dev
+      if: contains(github.ref, 'develop')
+      with:
+        host: ${{ secrets.HOST_DEV }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        #key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          sudo docker pull ${{ secrets.DOCKER_REPO }}/dotoriham-dev
+          docker-compose up -d
+          docker image prune -f
+          
