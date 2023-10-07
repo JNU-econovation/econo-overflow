@@ -3,10 +3,13 @@ package com.econovation.overflow.auth.web.controller;
 import com.econovation.overflow.auth.domain.dto.request.LoginUserRequest;
 import com.econovation.overflow.auth.domain.dto.response.TokenResponse;
 import com.econovation.overflow.auth.domain.usecase.LoginUserUseCase;
+import com.econovation.overflow.auth.domain.usecase.ReissueUseCase;
+import com.econovation.overflow.auth.web.support.CookieExtractor;
 import com.econovation.overflow.common.support.respnose.ApiResponse;
 import com.econovation.overflow.common.support.respnose.ApiResponseBody.SuccessBody;
 import com.econovation.overflow.common.support.respnose.ApiResponseGenerator;
 import com.econovation.overflow.common.support.respnose.MessageCode;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,16 +22,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
-public class LoginController {
+public class AuthController {
 	private static final String REFRESH_TOKEN = "refreshToken";
 	private static final int REFRESH_TOKEN_EXPIRATION = 7 * 24 * 60 * 60;
 	private final LoginUserUseCase loginUserUseCase;
+	private final ReissueUseCase reissueUseCase;
+	private final CookieExtractor cookieExtractor;
 
 	@PostMapping("/login")
 	public ApiResponse<SuccessBody<TokenResponse>> signIn(
 			@RequestBody @Valid LoginUserRequest request) {
 		final TokenResponse tokenResponse = loginUserUseCase.execute(request);
 		final ResponseCookie cookie = putTokenInCookie(tokenResponse);
+		return ApiResponseGenerator.success(
+				tokenResponse, HttpStatus.OK, MessageCode.CREATE, cookie.toString());
+	}
+
+	@PostMapping("/reissue")
+	public ApiResponse<SuccessBody<TokenResponse>> reissue(HttpServletRequest request) {
+
+		final String token = cookieExtractor.extract(request);
+		final TokenResponse tokenResponse = reissueUseCase.execute(token);
+		final ResponseCookie cookie = putTokenInCookie(tokenResponse);
+
 		return ApiResponseGenerator.success(
 				tokenResponse, HttpStatus.OK, MessageCode.CREATE, cookie.toString());
 	}

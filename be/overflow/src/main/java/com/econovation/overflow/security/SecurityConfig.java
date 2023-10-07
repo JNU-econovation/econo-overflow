@@ -40,6 +40,7 @@ public class SecurityConfig {
 		http.formLogin().disable();
 		http.httpBasic().disable();
 		http.cors().configurationSource(corsConfigurationSource());
+
 		http.authorizeRequests()
 				.requestMatchers(CorsUtils::isPreFlightRequest)
 				.permitAll()

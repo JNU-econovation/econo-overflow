@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +23,12 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @SuperBuilder(toBuilder = true)
 @Entity(name = ENTITY_PREFIX + "_entity")
+@Table(
+		name = ENTITY_PREFIX + "_tb",
+		indexes = {
+			@Index(name = "idx_nickname", columnList = ENTITY_PREFIX + "_nickname", unique = true),
+			@Index(name = "idx_email", columnList = ENTITY_PREFIX + "_email", unique = true)
+		})
 public class UserEntity extends BaseEntity {
 
 	public static final String ENTITY_PREFIX = "user";

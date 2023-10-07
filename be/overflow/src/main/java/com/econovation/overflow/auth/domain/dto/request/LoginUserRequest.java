@@ -21,7 +21,7 @@ public class LoginUserRequest implements AbstractRequestDto, EmailSupplier {
 	@NotNull @Email private String email;
 
 	@NotNull
-	@Size(min = 8)
+	@Size(min = 8, message = "8글자 이상이여야 합니다.")
 	@SpecialLetter
 	@UpperCase
 	private String password;
