@@ -31,19 +31,19 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    ## gradle setting
-#    - name: init with Gradle
-#      uses: gradle/gradle-build-action@v2
-#    - run: gradle init
-#    - name: Build with Gradle
-#      uses: gradle/gradle-build-action@v2
-#      with:
-#        gradle-version: 7.5.1
-#        arguments: build
+    # gradle setting
+    - name: init with Gradle
+      uses: gradle/gradle-build-action@v2
+    - run: gradle init
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: 7.5.1
+        arguments: build
 
       ## gradle build
     - name: Build with Gradle
-      run: ./gradlew clean build -x test
+      run: ./gradlew build -x test
 
       ## docker build & push to production      // name 수정 필요
       ## DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
