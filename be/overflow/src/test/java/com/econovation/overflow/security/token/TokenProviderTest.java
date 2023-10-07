@@ -2,7 +2,6 @@ package com.econovation.overflow.security.token;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Collections;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +19,7 @@ class TokenProviderTest {
 		Long userId = 1L;
 
 		// when
-		String token = tokenProvider.createAccessToken(userId, Collections.emptyList());
+		String token = tokenProvider.createAccessToken(userId);
 
 		// then
 		assertThat(token.split("\\.")).hasSize(3);

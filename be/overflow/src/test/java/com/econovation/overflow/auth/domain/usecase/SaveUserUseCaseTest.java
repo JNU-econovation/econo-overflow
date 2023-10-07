@@ -9,17 +9,14 @@ import com.econovation.overflow.auth.domain.model.converter.UserModelConverter;
 import com.econovation.overflow.auth.persistence.converter.UserEntityConverter;
 import com.econovation.overflow.auth.persistence.entity.UserEntity;
 import com.econovation.overflow.auth.persistence.repository.UserRepository;
-import com.econovation.overflow.security.SecurityConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.context.annotation.Import;
 
 @ExtendWith(MockitoExtension.class)
-@Import(SecurityConfig.class)
 class SaveUserUseCaseTest {
 	@Mock private ValidEmailUseCase validEmailUseCase;
 
