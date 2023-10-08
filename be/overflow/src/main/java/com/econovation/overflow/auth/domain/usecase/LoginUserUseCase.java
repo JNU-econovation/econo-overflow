@@ -4,11 +4,11 @@ import com.econovation.overflow.auth.domain.dto.request.LoginUserRequest;
 import com.econovation.overflow.auth.domain.dto.response.TokenResponse;
 import com.econovation.overflow.auth.domain.exception.NotFoundEmailException;
 import com.econovation.overflow.auth.domain.exception.NotFoundPasswordException;
+import com.econovation.overflow.auth.domain.helper.Encoder;
 import com.econovation.overflow.auth.domain.service.CreateTokenService;
 import com.econovation.overflow.auth.persistence.entity.UserEntity;
 import com.econovation.overflow.auth.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginUserUseCase {
 
 	private final UserRepository userRepository;
-	private final PasswordEncoder passwordEncoder;
+	private final Encoder encoder;
 	private final CreateTokenService createTokenService;
 
 	@Transactional
@@ -40,6 +40,6 @@ public class LoginUserUseCase {
 	}
 
 	private boolean matchPassword(final String requestPassword, final String password) {
-		return passwordEncoder.matches(requestPassword, password);
+		return encoder.matches(requestPassword, password);
 	}
 }

@@ -1,12 +1,10 @@
 package com.econovation.overflow.security.token;
 
-import com.econovation.overflow.security.authority.UserRole;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.List;
 import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -30,12 +28,11 @@ public class TokenProvider {
 		this.refreshValidTime = refreshValidTime;
 	}
 
-	public String createAccessToken(final Long userId, final List<UserRole> userRoles) {
+	public String createAccessToken(final Long userId) {
 		Date now = new Date();
 		return Jwts.builder()
 				.setHeaderParam(Header.TYPE, Header.JWT_TYPE)
 				.claim(USER_ID_CLAIM_KEY, userId)
-				.claim(USER_ROLE_CLAIM_KEY, userRoles.toString())
 				.setIssuedAt(now)
 				.setExpiration(new Date(now.getTime() + accessValidTime))
 				.signWith(secretKey)
