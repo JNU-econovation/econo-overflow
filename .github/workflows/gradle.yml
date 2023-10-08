@@ -52,7 +52,8 @@ jobs:
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
-        docker push ${{ secrets.DOCKER_REPO }}/ecnv-overflow
+        docker push ${{ secrets.DOCKER_REPO }}/ecnv-overflow 
+
 
       ## deploy to develop
       # HOST_DEV USERNAME  PASSWORD
