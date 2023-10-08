@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,20 +17,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RequiredArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
 
-	private final long MAX_AGE_SECS = 3600;
 	private final AuthInterceptor authInterceptor;
 	private final TokenResolver tokenResolver;
+
+	public static final String ALLOWED_METHOD_NAMES = "GET,HEAD,POST,PUT,DELETE,TRACE,OPTIONS,PATCH";
+
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry
-				.addMapping("/**")
-				.allowedOriginPatterns("*")
-				.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-				.allowedHeaders("*")
-				.exposedHeaders("Authorization")
-				.allowCredentials(true)
-				.maxAge(MAX_AGE_SECS);
+				.addMapping("/api/**")
+				.allowedOrigins("http://localhost:3000")
+				.allowedMethods(ALLOWED_METHOD_NAMES.split(","))
+				.exposedHeaders(HttpHeaders.SET_COOKIE)
+				.allowCredentials(true);
 	}
 
 	@Override
