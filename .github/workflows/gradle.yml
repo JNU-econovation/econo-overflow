@@ -43,7 +43,7 @@ jobs:
 
       ## gradle build
     - name: Build with Gradle
-      run: ./gradlew :spotlessApply clean build -x test
+      run: ./gradlew clean build -x test
 
       ## docker build & push to develop
       # DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
