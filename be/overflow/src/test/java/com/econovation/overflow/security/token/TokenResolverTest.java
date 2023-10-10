@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.econovation.overflow.security.exception.NotValidToken;
-import java.util.Collections;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +20,7 @@ class TokenResolverTest {
 	void get_userInfo() {
 		// given
 		Long userId = 1L;
-		String token = tokenProvider.createAccessToken(userId, Collections.emptyList());
+		String token = tokenProvider.createAccessToken(userId);
 
 		// when
 		Long userInfo = tokenResolver.getUserInfo(token);
@@ -36,7 +35,7 @@ class TokenResolverTest {
 		// given
 		TokenProvider expiredTokenProvider = new TokenProvider(JWT_SECRET_KEY, 0, 0);
 		Long userId = 1L;
-		String token = expiredTokenProvider.createAccessToken(userId, Collections.emptyList());
+		String token = expiredTokenProvider.createAccessToken(userId);
 
 		// when & then
 		assertThatThrownBy(() -> tokenResolver.getUserInfo(token)).isInstanceOf(NotValidToken.class);
