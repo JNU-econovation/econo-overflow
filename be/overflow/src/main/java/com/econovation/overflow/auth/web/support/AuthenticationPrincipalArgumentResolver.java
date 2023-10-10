@@ -1,6 +1,6 @@
 package com.econovation.overflow.auth.web.support;
 
-import com.econovation.overflow.security.token.TokenResolver;
+import com.econovation.overflow.support.token.TokenResolver;
 import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

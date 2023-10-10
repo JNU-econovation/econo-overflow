@@ -5,7 +5,7 @@ import com.econovation.overflow.auth.domain.exception.AuthorizationException;
 import com.econovation.overflow.auth.domain.service.CreateTokenService;
 import com.econovation.overflow.auth.persistence.entity.AuthInfoEntity;
 import com.econovation.overflow.auth.persistence.repository.AuthInfoRepository;
-import com.econovation.overflow.security.token.TokenResolver;
+import com.econovation.overflow.support.token.TokenResolver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
