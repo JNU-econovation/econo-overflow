@@ -1,4 +1,4 @@
-package com.econovation.overflow.security.exception;
+package com.econovation.overflow.support.token;
 
 import com.econovation.overflow.common.exception.BusinessException;
 import org.springframework.http.HttpStatus;

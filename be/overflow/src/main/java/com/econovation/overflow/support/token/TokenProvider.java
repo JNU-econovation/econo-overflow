@@ -1,4 +1,4 @@
-package com.econovation.overflow.security.token;
+package com.econovation.overflow.support.token;
 
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 public class TokenProvider {
 
 	private static final String USER_ID_CLAIM_KEY = "userId";
-	private static final String USER_ROLE_CLAIM_KEY = "memberRole";
 	private final SecretKey secretKey;
 
 	private final long accessValidTime;

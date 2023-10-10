@@ -1,7 +1,7 @@
 package com.econovation.overflow.auth.web.controller;
 
 import com.econovation.overflow.auth.web.support.AuthorizationExtractor;
-import com.econovation.overflow.security.token.TokenValidator;
+import com.econovation.overflow.support.token.TokenValidator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

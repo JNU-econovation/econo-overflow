@@ -8,7 +8,7 @@ security:
     token:
       secretKey: asccesssecretkeyoverflowsecrekey
       access:
-        validTime: 1800
+        validTime: 1800000
       refresh:
-        validTime : 3600
+        validTime: 3600000
 

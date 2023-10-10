@@ -2,7 +2,7 @@ package com.econovation.overflow.config;
 
 import com.econovation.overflow.auth.web.controller.AuthInterceptor;
 import com.econovation.overflow.auth.web.support.AuthenticationPrincipalArgumentResolver;
-import com.econovation.overflow.security.token.TokenResolver;
+import com.econovation.overflow.support.token.TokenResolver;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
