@@ -12,6 +12,8 @@ on:
     branches: [ "develop","be" ]
   pull_request:
     branches: [ "develop","be" ]
+  workflow_dispatch:
+  # GitHub Action Run workflow 가능하게 해주는 명령어
 
 permissions:
   contents: read
