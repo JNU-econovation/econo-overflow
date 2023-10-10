@@ -8,7 +8,6 @@ import com.econovation.overflow.auth.domain.dto.request.LoginUserRequest;
 import com.econovation.overflow.auth.domain.exception.NotFoundEmailException;
 import com.econovation.overflow.auth.domain.helper.Encoder;
 import com.econovation.overflow.auth.domain.service.CreateTokenService;
-import com.econovation.overflow.auth.persistence.entity.UserEntity;
 import com.econovation.overflow.auth.persistence.repository.UserRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
@@ -33,8 +32,6 @@ class LoginUserUseCaseTest {
 	void exist_email_check_when_login() {
 		// given
 		LoginUserRequest request = LoginUserRequest.builder().build();
-		UserEntity entity = UserEntity.builder().build();
-
 		when(userRepository.findByEmail(any())).thenReturn(Optional.empty());
 
 		// when & then
