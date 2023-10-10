@@ -30,6 +30,7 @@ public class TokenProvider {
 
 	public String createAccessToken(final Long userId) {
 		Date now = new Date();
+
 		return Jwts.builder()
 				.setHeaderParam(Header.TYPE, Header.JWT_TYPE)
 				.claim(USER_ID_CLAIM_KEY, userId)
