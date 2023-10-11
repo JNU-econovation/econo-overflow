@@ -21,7 +21,7 @@ class ValidNicknameUseCaseTest {
 
 	@Test
 	@DisplayName("닉네임 중복되면 예외가 발생한다.")
-	public void duplicated_email() {
+	void duplicated_email() {
 		// given
 		SaveUserRequest request = SaveUserRequest.builder().nickname("nickname").build();
 
@@ -33,7 +33,7 @@ class ValidNicknameUseCaseTest {
 
 	@Test
 	@DisplayName("닉네임 중복이 되지 않으면 예외가 발생하지 않는다.")
-	public void not_duplicated_email() {
+	void not_duplicated_email() {
 		// given
 		SaveUserRequest request = SaveUserRequest.builder().nickname("nickname").build();
 
