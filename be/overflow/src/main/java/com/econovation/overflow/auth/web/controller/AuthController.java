@@ -35,7 +35,7 @@ public class AuthController {
 		final TokenResponse tokenResponse = loginUserUseCase.execute(request);
 		final ResponseCookie cookie = putTokenInCookie(tokenResponse);
 		return ApiResponseGenerator.success(
-				tokenResponse, HttpStatus.OK, MessageCode.CREATE, cookie.toString());
+				tokenResponse, HttpStatus.OK, MessageCode.CREATE, "Set-Cookie", cookie.toString());
 	}
 
 	@PostMapping("/reissue")
@@ -46,7 +46,7 @@ public class AuthController {
 		final ResponseCookie cookie = putTokenInCookie(tokenResponse);
 
 		return ApiResponseGenerator.success(
-				tokenResponse, HttpStatus.OK, MessageCode.CREATE, cookie.toString());
+				tokenResponse, HttpStatus.OK, MessageCode.CREATE, "Set-Cookie", cookie.toString());
 	}
 
 	private ResponseCookie putTokenInCookie(final TokenResponse tokenResponse) {
