@@ -56,8 +56,9 @@ jobs:
       ## docker build & push to develop
       # DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
     - name: Docker build & push to dev
+      working-directory: ./be/overflow
       if: contains(github.ref, 'develop')
-      run: |
+      run:
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
         docker push ${{ secrets.DOCKER_REPO }}/ecnv-overflow 
