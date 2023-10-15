@@ -9,6 +9,6 @@ ARG JAVA_OPTS
 ARG RELEASE_VERSION
 ENV DD_VERSION=${RELEASE_VERSION}
 
-ARG JAR_FILE="build/libs/*.jar"
+ARG JAR_FILE="./build/libs/*.jar"
 COPY ./build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
