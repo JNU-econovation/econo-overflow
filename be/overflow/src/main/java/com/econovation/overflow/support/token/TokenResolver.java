@@ -1,6 +1,5 @@
-package com.econovation.overflow.security.token;
+package com.econovation.overflow.support.token;
 
-import com.econovation.overflow.security.exception.NotValidToken;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

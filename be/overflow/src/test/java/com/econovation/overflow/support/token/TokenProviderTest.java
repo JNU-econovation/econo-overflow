@@ -1,4 +1,4 @@
-package com.econovation.overflow.security.token;
+package com.econovation.overflow.support.token;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

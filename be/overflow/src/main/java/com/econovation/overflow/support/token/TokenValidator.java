@@ -1,4 +1,4 @@
-package com.econovation.overflow.security.token;
+package com.econovation.overflow.support.token;
 
 import com.econovation.overflow.auth.domain.exception.AuthorizationException;
 import java.util.Date;

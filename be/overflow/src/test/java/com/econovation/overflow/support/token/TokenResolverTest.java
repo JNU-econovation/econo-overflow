@@ -1,9 +1,8 @@
-package com.econovation.overflow.security.token;
+package com.econovation.overflow.support.token;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.econovation.overflow.security.exception.NotValidToken;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
