@@ -48,6 +48,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+      with:
+        version: v0.7.0
+
       ## docker build & push to develop
       # DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
     - name: Docker build & push to dev
