@@ -60,9 +60,9 @@ jobs:
       working-directory: ./be/overflow
       if: contains(github.ref, 'develop')
       run: |
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
-        docker build .
-        docker push ${{ secrets.DOCKER_REPO }}/ecnv-overflow 
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -t ecnv-overflow:latest .
+        docker push ${{ secrets.DOCKER_REPO }}/ecnv-overflow
 
       # docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
       # docker build -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
