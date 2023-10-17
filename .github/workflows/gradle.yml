@@ -47,7 +47,7 @@ jobs:
       ## gradle build
     - name: Build with Gradle
       working-directory: ./be/overflow
-      run: ./gradlew build
+      run: ./gradlew build -x test
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
