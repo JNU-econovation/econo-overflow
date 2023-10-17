@@ -9,6 +9,7 @@ ARG JAVA_OPTS
 ARG RELEASE_VERSION
 ENV DD_VERSION=${RELEASE_VERSION}
 
-ARG JAR_FILE="./overflow/build/libs/*.jar"
+ARG JAR_FILE="./build/libs/*.jar"
+RUN ls ./build/libs
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
