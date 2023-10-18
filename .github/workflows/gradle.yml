@@ -80,6 +80,7 @@ jobs:
         port: 22
         #key: ${{ secrets.PRIVATE_KEY }}
         script: |
+          sudo usermod -a -G docker $USER
           sudo docker pull ${{ secrets.DOCKER_REPO }}/ecnv-overflow
           docker-compose up -d
           docker image prune -f
