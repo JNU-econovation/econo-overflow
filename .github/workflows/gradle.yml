@@ -70,6 +70,7 @@ jobs:
       ## deploy to develop
       # HOST_DEV USERNAME  PASSWORD
     - name: Deploy to dev
+      working-directory: ./be/overflow
       uses: appleboy/ssh-action@master
       id: deploy-dev
       if: contains(github.ref, 'develop')
