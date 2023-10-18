@@ -71,7 +71,6 @@ jobs:
       ## deploy to develop
       # HOST_DEV USERNAME  PASSWORD
     - name: Deploy to dev
-      working-directory: ./be/overflow
       uses: appleboy/ssh-action@master
       id: deploy-dev
       if: contains(github.ref, 'develop')
@@ -81,6 +80,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         #key: ${{ secrets.PRIVATE_KEY }}
+        working-directory: ./be/overflow
         script: |
           sudo usermod -a -G docker $USER
           sudo docker pull ${{ secrets.DOCKER_REPO }}/ecnv-overflow
