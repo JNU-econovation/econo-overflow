@@ -84,7 +84,7 @@ jobs:
 
   ## time
   current-time:
-    needs: CI-CD
+    # needs: CI-CD
     runs-on: ubuntu-latest
     steps:
       - name: Get Current Time
