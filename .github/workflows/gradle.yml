@@ -13,7 +13,6 @@ on:
   pull_request:
     branches: [ "develop","be" ]
   workflow_dispatch:
-  # GitHub Action Run workflow 가능하게 해주는 명령어
 
 permissions:
   contents: read
@@ -56,7 +55,6 @@ jobs:
         version: v0.7.0
 
       ## docker build & push to develop
-      # DOCKER_USERNAME DOCKER_PASSWORD DOCKER_REPO
     - name: Docker build & push to dev
       working-directory: ./be/overflow
       if: contains(github.ref, 'develop')
@@ -65,11 +63,9 @@ jobs:
         docker build -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
         docker push ${{ secrets.DOCKER_REPO }}/ecnv-overflow
 
-      # docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
-      # docker build -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
+
 
       ## deploy to develop
-      # HOST_DEV USERNAME  PASSWORD
     - name: Deploy to dev
       uses: appleboy/ssh-action@master
       id: deploy-dev
@@ -79,7 +75,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: 22
-        #key: ${{ secrets.PRIVATE_KEY }}
         working-directory: ./be/overflow
         script: |
           sudo usermod -a -G docker $USER
