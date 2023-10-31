@@ -34,8 +34,8 @@ jobs:
     - name: build  
       working-directory: ./fe
       run: | 
-        npm ci 
-        npm run build --if-present
+        npm install
+        npm  build
         npm test
 
     - name: S3 Deploy
