@@ -35,7 +35,7 @@ jobs:
       working-directory: ./fe
       run: | 
         npm install
-        npm  build
+        npm run build
         npm test
 
     - name: S3 Deploy
