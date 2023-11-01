@@ -6,7 +6,7 @@ const FooterSite = () => {
       <div className="footerBox">
         <p className="footerTitle">FAMILY SITE</p>
         <p className="footerContent">
-          <a href="https://econovation.kr/">econovation.kr</a>
+          <a>econovation.kr</a>
         </p>
       </div>
     </div>
