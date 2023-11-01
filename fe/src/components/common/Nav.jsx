@@ -9,11 +9,7 @@ const Nav = () => {
     <nav className="flex justify-end">
       <div className="flex justify-end items-center">
         {selector.isLogin && <LoginSuccess />}
-        {!selector.isLogin && (
-          <a className="navComponent" href="/login">
-            로그인
-          </a>
-        )}
+        {!selector.isLogin && <a className="navComponent">로그인</a>}
       </div>
     </nav>
   );
