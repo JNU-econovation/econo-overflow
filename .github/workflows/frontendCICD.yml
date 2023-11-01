@@ -5,9 +5,9 @@ name: Node.js CI/CD
 
 on:
   push:
-    branches: [ "develop", "infra" ]
+    branches: [ "infra" ]
   pull_request:
-    branches: [ "develop", "infra" ]
+    branches: [ "infra" ]
 
 permissions:
   contents: read
