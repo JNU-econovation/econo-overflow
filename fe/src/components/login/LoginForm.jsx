@@ -11,14 +11,14 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false); // eslint-disable-line no-unused-vars
   const data = { email, password };
   const navigate = useNavigate();
-  const emailPattern =
-    /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{3}$/;
+  const emailPattern = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{3}$/;
   const isValidEmail = emailPattern.test(email);
   const passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+])(?=.{8,})$/;
   const isValidPassword = passwordPattern.test(password);
+
   const loginFunction = (e) => {
     e.preventDefault();
     console.log(e);
@@ -39,12 +39,19 @@ const LoginForm = () => {
       return alert("Password를 입력하세요.");
     } else {
       instance
-        .post("/users/login", data, {
+        .post("/auth/login", data, {
           responseType: "json",
           headers: { "Content-Type": "application/json" },
         })
         .then((res) => {
-          let header = res.headers.authorization;
+          const header = res.headers;
+          const response = res.data.data;
+          const token = response.accessToken;
+          const date = response.expiredTime;
+          localStorage.setItem("accessToken", token);
+          instance.defaults.headers.common["Authorization"] = token;
+          console.log(token);
+          console.log(date);
           console.log(header);
           dispatch(loginUser(res.data.user));
           navigate("/");
@@ -55,9 +62,7 @@ const LoginForm = () => {
   return (
     <div className="flexCenter">
       <form className="my-40" onSubmit={loginFunction}>
-        <h2 className="flexCenter mb-10 text-blue font-bold text-4xl">
-          로그인
-        </h2>
+        <h2 className="flexCenter mb-10 text-blue font-bold text-4xl">로그인</h2>
         <LoginInput
           email={email}
           password={password}

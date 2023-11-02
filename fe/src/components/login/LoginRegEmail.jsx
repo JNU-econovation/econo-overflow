@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import LoginButton from "./LoginButton";
 
 const LoginReg = ({ isValidEmail }) => {
   const [emailReg, setEmailReg] = useState("");
@@ -10,9 +9,7 @@ const LoginReg = ({ isValidEmail }) => {
     }
   }, [isValidEmail]);
 
-  return (
-    <div>{!isValidEmail && <p className="invalid-email-message"></p>}</div>
-  );
+  return <div>{!isValidEmail && <p className="invalid-email-message"></p>}</div>;
 };
 
 export default LoginReg;

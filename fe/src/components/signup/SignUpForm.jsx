@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../../api/instance";
-
-import Form from "react-bootstrap/Form";
 import SignUpInput from "./SignUpInput";
 import SignUpButton from "./SignUpButton";
 
@@ -27,7 +24,7 @@ const SignUpForm = () => {
       return alert("Password가 일치하지 않습니다.");
     } else {
       console.log(data);
-      instance.post("/users/signup", data).then((res) => {
+      instance.post("/auth/signup", data).then((res) => {
         console.log(res.data);
         navigate("/login");
       });
