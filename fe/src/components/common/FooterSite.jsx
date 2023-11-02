@@ -6,7 +6,7 @@ const FooterSite = () => {
       <div className="footerBox">
         <p className="footerTitle">FAMILY SITE</p>
         <p className="footerContent">
-          <a>econovation.kr</a>
+          <p>econovation.kr</p>
         </p>
       </div>
     </div>

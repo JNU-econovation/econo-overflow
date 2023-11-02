@@ -2,14 +2,7 @@ import React from "react";
 import LoginRegEmail from "./LoginRegEmail";
 import LobinRegPw from "./LoginRegPw";
 
-const LoginInput = ({
-  email,
-  password,
-  setEmail,
-  setPassword,
-  isValidEmail,
-  isValidPassWord,
-}) => {
+const LoginInput = ({ email, password, setEmail, setPassword, isValidEmail, isValidPassWord }) => {
   return (
     <div className="">
       <div className="inputComponent flexCenter border-b mt-52">
