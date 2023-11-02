@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TitleLogo = () => {
   return (
     <div className="flex justify-center m-[4rem]">
-      <a>
+      <Link to="/main">
         <img className="w-[20rem] justify-center cursor-pointer" src="/icon/title-logo.png" alt="title-logo"></img>
-      </a>
+      </Link>
     </div>
   );
 };

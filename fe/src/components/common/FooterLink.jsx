@@ -6,16 +6,16 @@ const FooterLink = () => {
       <div className="footerBox">
         <p className="footerTitle">SNS</p>
         <p className="footerContent">
-          <a className="footerLink">INSTAGRAM</a>
-          <a className="footerLink">GITHUB</a>
+          <p className="footerLink">INSTAGRAM</p>
+          <p className="footerLink">GITHUB</p>
           <br />
-          <a className="footerLink">YOUTUBE</a>
-          <a className="footerLink"> NOTION</a>
+          <p className="footerLink">YOUTUBE</p>
+          <p className="footerLink"> NOTION</p>
           <br />
-          <a className="footerLink">VELOG</a>
-          <a className="footerLink"> FACEBOOK</a>
+          <p className="footerLink">VELOG</p>
+          <p className="footerLink"> FACEBOOK</p>
           <br />
-          <a className="footerLink">MEDIUM</a>
+          <p className="footerLink">MEDIUM</p>
         </p>
       </div>
     </div>
