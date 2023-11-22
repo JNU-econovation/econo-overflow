@@ -9,9 +9,9 @@ name: overflow CI/CD
 
 on:
   push:
-    branches: [ "develop","be" ]
+    branches: [ "infra" ]
   pull_request:
-    branches: [ "develop","be" ]
+    branches: [ "infra" ]
   workflow_dispatch:
 
 permissions:
@@ -57,7 +57,7 @@ jobs:
       ## docker build & push to develop
     - name: Docker build & push to dev
       working-directory: ./be/overflow
-      if: contains(github.ref, 'develop')
+      if: contains(github.ref, 'infra')
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
@@ -69,7 +69,7 @@ jobs:
     - name: Deploy to dev
       uses: appleboy/ssh-action@master
       id: deploy-dev
-      if: contains(github.ref, 'develop')
+      if: contains(github.ref, 'infra')
       with:
         host: ${{ secrets.HOST_DEV }}
         username: ${{ secrets.USERNAME }}
