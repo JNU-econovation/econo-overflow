@@ -77,7 +77,9 @@ jobs:
         port: 22
         working-directory: ./be/overflow
         script: |
+          pwd
           ls -al
+          cd ecnv-overflow/be/overflow/
           sudo usermod -a -G docker $USER
           docker pull ${{ secrets.DOCKER_REPO }}/ecnv-overflow
           docker-compose up -d
