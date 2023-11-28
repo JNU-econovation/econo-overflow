@@ -33,10 +33,12 @@ jobs:
         distribution: 'temurin'
 
     - name: Grant execute permission for gradlew
+      working-directory: ./be/overflow
       run: chmod +x ./gradlew
       shell: bash
 
     - name: Gradle Caching
+      working-directory: ./be/overflow
       uses: actions/cache@v3
       with:
         path: |
