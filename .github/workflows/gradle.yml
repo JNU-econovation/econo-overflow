@@ -11,7 +11,7 @@ on:
   push:
     branches: [ "infra" ]
   pull_request:
-    branches: [ "infra" ]
+    branches: [ "infra", "develop" ]
   workflow_dispatch:
 
 permissions:
@@ -19,9 +19,7 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
 
     ## jdk setting
@@ -38,7 +36,6 @@ jobs:
       shell: bash
 
     - name: Gradle Caching
-      working-directory: ./be/overflow
       uses: actions/cache@v3
       with:
         path: |
@@ -47,7 +44,6 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
-          
 
       ## gradle build
     - name: Build with Gradle
