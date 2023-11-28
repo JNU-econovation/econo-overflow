@@ -9,9 +9,9 @@ name: overflow CI/CD
 
 on:
   push:
-    branches: [ "develop","be" ]
+    branches: [ "infra" ]
   pull_request:
-    branches: [ "develop","be" ]
+    branches: [ "infra", "develop" ]
   workflow_dispatch:
 
 permissions:
@@ -19,9 +19,7 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
 
     ## jdk setting
@@ -32,16 +30,20 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # gradle setting
-    - name: init with Gradle
-      uses: gradle/gradle-build-action@v2
-    - run: gradle init
+    - name: Grant execute permission for gradlew
+      working-directory: ./be/overflow
+      run: chmod +x ./gradlew
+      shell: bash
 
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2
+    - name: Gradle Caching
+      uses: actions/cache@v3
       with:
-        gradle-version: 7.5.1
-        arguments: build
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
 
       ## gradle build
     - name: Build with Gradle
@@ -49,15 +51,15 @@ jobs:
       run: ./gradlew build -x test
 
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-      with:
-        version: v0.7.0
+    #- name: Set up Docker Buildx
+    #  uses: docker/setup-buildx-action@v1
+    #  with:
+    #    version: v0.7.0
 
       ## docker build & push to develop
     - name: Docker build & push to dev
       working-directory: ./be/overflow
-      if: contains(github.ref, 'develop')
+      if: contains(github.ref, 'infra')
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t ${{ secrets.DOCKER_REPO }}/ecnv-overflow .
@@ -69,7 +71,7 @@ jobs:
     - name: Deploy to dev
       uses: appleboy/ssh-action@master
       id: deploy-dev
-      if: contains(github.ref, 'develop')
+      if: contains(github.ref, 'infra')
       with:
         host: ${{ secrets.HOST_DEV }}
         username: ${{ secrets.USERNAME }}
@@ -77,25 +79,10 @@ jobs:
         port: 22
         working-directory: ./be/overflow
         script: |
+          pwd
+          ls -al
+          cd ecnv-overflow/be/overflow/
           sudo usermod -a -G docker $USER
-          sudo docker pull ${{ secrets.DOCKER_REPO }}/ecnv-overflow
+          docker pull ${{ secrets.DOCKER_REPO }}/ecnv-overflow
           docker-compose up -d
           docker image prune -f
-
-  ## time
-  current-time:
-    # needs: CI-CD
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Current Time
-        uses: 1466587594/get-current-time@v2
-        id: current-time
-        with:
-          format: YYYY-MM-DDTHH:mm:ss
-          # utcOffset: "+09:00" # 기준이 UTC이기 때문에 한국시간인 KST를 맞추기 위해 +9시간 추가
-          script: |
-            sudo timedatectl set-timezone Asia/Seoul
-
-      - name: Print Current Time
-        run: echo "Current Time=${{steps.current-time.outputs.formattedTime}}" # current-time 에서 지정한 포맷대로 현재 시간 출력
-        shell: bash
